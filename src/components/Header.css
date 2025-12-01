@@ -1,0 +1,52 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 20px;
+  background-color: #9158eca9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 50px;
+  cursor: pointer;
+}
+
+.header-menu ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.header-menu li {
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s;
+  color: white;
+}
+
+.header-menu li:hover {
+  color: #d4c1f8;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.header-buttons button {
+  background-color: #7a05be;
+  border-radius: 2rem;
+  padding: 6px;
+  border: 2px solid black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.header-buttons button:hover {
+  background-color: #0305a0;
+}

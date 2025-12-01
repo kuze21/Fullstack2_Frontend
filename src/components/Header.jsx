@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import "./Header.css"
 
 export default function Header() {
   const navigate = useNavigate()
@@ -23,10 +24,10 @@ export default function Header() {
       </div>
       <div className="InicioSesion">
         <button className="btnInicioSesion" onClick={()=>navigate('/login')}>
-          <img src="/img/usuario.png" width="30" height="30" />
+          <img src="../public/img/usuario.png" width="30" height="30" />
         </button>
         <button className="btnInicioSesion" onClick={()=>navigate('/carrito')}>
-          <img src="/img/shopping-cart.png" width="30" height="30" />
+          <img src="../public/img/shopping-cart.png" width="30" height="30" />
         </button>
       </div>
     </header>

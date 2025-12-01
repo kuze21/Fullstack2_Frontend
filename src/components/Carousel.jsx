@@ -6,14 +6,14 @@ export default function Carousel() {
       <div className="carousel-inner rounded shadow">
         <div className="carousel-item active">
           <Link to="/producto/1">
-            <img src="../assets/SilksongCarrusel.jpg" className="d-block w-100" alt="Juego 1" />
+            <img src='../public/img/SilksongCarrusel.jpg' className="d-block w-100" alt="Juego 1" />
           </Link>
         </div>
         <div className="carousel-item">
-          <img src="../assets/grounded2Carrusel.jpg" className="d-block w-100" alt="Juego 2" />
+          <img src="../public/img/grounded2Carrusel.jpg" className="d-block w-100" alt="Juego 2" />
         </div>
         <div className="carousel-item">
-          <img src="../assets/minecraft2Carrusel.jpg" className="d-block w-100" alt="Juego 3" />
+          <img src="../public/img/minecraft2Carrusel.jpg" className="d-block w-100" alt="Juego 3" />
         </div>
       </div>
       <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
