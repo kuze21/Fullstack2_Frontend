@@ -1,0 +1,61 @@
+@import url('../styles/Base.css');
+
+.contenedor-productos {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.producto {
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: transform 0.3s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto-imagen {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.producto-detalles {
+    padding: 1rem;
+    text-align: center;
+    background-color: #6638b1;
+    color: white;
+}
+
+.producto-titulo {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.producto-precio {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.producto-agregar {
+    background-color: #7a05be;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+.producto-agregar:hover {
+    background-color: #0305a0;
+}

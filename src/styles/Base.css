@@ -1,0 +1,108 @@
+/* base.css - Elementos comunes a todas las páginas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* HEADER UNIFICADO */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #9158eca9;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    align-items: center;
+    top: 0; 
+}
+
+header h1 {
+    color: white;
+    font-size: 24px;
+}
+
+#menu menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu li {
+    padding: 0 15px;
+}
+
+#menu a {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+#menu a:hover {
+    color: #d4c1f8;
+}
+
+.InicioSesion {
+    display: flex;
+    gap: 10px;
+}
+
+.btnInicioSesion, .shopping-cart-btn {
+    background-color: #7a05be;
+    border-radius: 2rem;
+    border: 2px solid black;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.btnInicioSesion:hover, .shopping-cart-btn:hover {
+    background-color: #0305a0;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.main-container {
+    /* Make the main container transparent by default so pages can control their own layout
+       Previously this was a large white rounded card which caused most pages to appear
+       'boxed' on the left. Keep top margin to account for the fixed header. */
+    background-color: transparent;
+    margin: 100px 0 0;
+    border-radius: 0;
+    padding: 2rem;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* FOOTER UNIFICADO */
+footer.contacto {
+    text-align: left;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    margin-top: auto;
+}
+
+footer.contacto li {
+    display: block;
+    padding: 0;
+}

@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
+import Layout from './components/Layout.jsx'
+
+import MenuPrincipal from './pages/MenuPrincipal.jsx';
+import Productos from "./pages/Productos.jsx";
+import DetalleProducto from "./pages/DetalleProducto.jsx";
+
+/*
+import Carrito from "./pages/Carrito.jsx";
+import Login from "./pages/Login.jsx";
+import Formulario from "./pages/Formulario.jsx";
+import MapaSitio from "./pages/MapaSitio.jsx";
+import Registrarse from "./pages/Registrarse.jsx"
+import AdminPanel from "./pages/AdminPanel.jsx";
+import RutaAdmin from "./components/RutaAdmin.jsx";
+import RutaProtegida from "./components/RutaProtegida.jsx";
+*/
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      {/* Public wrapped in Layout */}
+      <Route element={<Layout><MenuPrincipal /></Layout>} path="/" />
+      <Route element={<Layout><Productos /></Layout>} path="/productos" />
+      <Route element={<Layout><DetalleProducto /></Layout>} path="/producto/:id" />
+
+      {/* Fallback */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }
 
-export default App
+export default App;
+
+/*
+      <Route element={<Layout><RoutesIndex.InicioSesion /></Layout>} path="/login" />
+      <Route element={<Layout><RoutesIndex.Carrito /></Layout>} path="/carrito" />
+      <Route element={<Layout><RoutesIndex.Blogs /></Layout>} path="/blogs" />
+      <Route element={<Layout><RoutesIndex.Registro /></Layout>} path="/registro" />
+*/
+      {/* Admin (also wrapped for consistent header/footer; adjust if needed) */}
+/*
+      <Route element={<Layout><RoutesIndex.Admin /></Layout>} path="/admin" />
+      <Route element={<Layout><RoutesIndex.AdminUsuario /></Layout>} path="/admin/usuario" />
+      <Route element={<Layout><RoutesIndex.AdminProducto /></Layout>} path="/admin/producto" />
+      <Route element={<Layout><RoutesIndex.AdminAgregarUsuario /></Layout>} path="/admin/agregar-usuario" />
+      <Route element={<Layout><RoutesIndex.AdministrarUsuarios /></Layout>} path="/admin/administrar-usuarios" />
+*/
