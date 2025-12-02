@@ -3,21 +3,34 @@ import { crearProducto } from "../services/producto.js";
 import { useNavigate } from "react-router-dom";
 
 export default function AgregarProducto() {
-  const [titulo, setTitulo] = useState("");
+  const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState("");
-  const [imagen, setImagen] = useState("");
+  const [stock, setStock] = useState("");
+  const [url_imagen, setUrlImagen] = useState("");
 
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const nuevo = { titulo, precio: Number(precio), imagen };
+    const nuevo = { nombre, precio: Number(precio), stock: Number(stock), url_imagen };
 
-    await crearProducto(nuevo);
+    try {
+      await crearProducto(nuevo);
 
-    alert("Producto agregado correctamente");
-    navigate("/productos");
+      setDescripcion("");
+      setNombre("");
+      setPrecio("");
+      setStock("");
+      setUrlImagen("");
+
+      alert("Producto agregado correctamente");
+
+      navigate("/productos");
+    } catch (error) {
+      console.error(error);
+      alert("Error al agregar el producto");
+    }
   }
 
   return (
@@ -28,11 +41,12 @@ export default function AgregarProducto() {
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 400 }}
       >
+
         <input
           type="text"
-          placeholder="Título"
-          value={titulo}
-          onChange={(e) => setTitulo(e.target.value)}
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
           required
         />
 
@@ -45,14 +59,22 @@ export default function AgregarProducto() {
         />
 
         <input
-          type="text"
-          placeholder="/img/imagen.jpg"
-          value={imagen}
-          onChange={(e) => setImagen(e.target.value)}
+          type="number"
+          placeholder="Stock"
+          value={stock}
+          onChange={(e) => setStock(e.target.value)}
           required
         />
 
-        <button className="btn-comprar">Guardar</button>
+        <input
+          type="text"
+          placeholder="urlImagen"
+          value={url_imagen}
+          onChange={(e) => setUrlImagen(e.target.value)}
+          required
+        />
+
+        <button type="submit" className="btn-comprar">Guardar</button>
       </form>
     </main>
   );

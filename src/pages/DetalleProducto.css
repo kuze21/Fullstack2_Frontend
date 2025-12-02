@@ -1,50 +1,53 @@
 @import url('../styles/Base.css');
 
 /* Layout general */
-.producto-detalle {
+.detalle-producto {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
-  display: flex;
-  gap: 40px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+/* Contenedor interno */
+.detalle-contenido {
+  display: flex;
+  gap: 40px;
+}
+
 /* Imagen estándar */
-.producto-img {
+.detalle-imagen {
   width: 480px;
   height: 270px;
-  object-fit: cover; /* evita deformaciones */
+  object-fit: cover;
   border-radius: 10px;
 }
 
 /* Sección de texto */
-.producto-info {
+.detalle-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 15px;
 }
 
-.producto-info h1 {
+.detalle-info h1 {
   font-size: 28px;
   color: #333;
 }
 
-.descripcion {
+.detalle-descripcion {
   color: #555;
   line-height: 1.4;
 }
 
-.precio {
+.detalle-precio {
   font-size: 26px;
   font-weight: bold;
   color: #764ba2;
 }
 
-/* Botón */
 .btn-comprar {
   padding: 12px;
   background: #667eea;
@@ -67,7 +70,7 @@
 }
 
 /* IGDB */
-.igdb-section {
+.igdb {
   margin-top: 20px;
   padding: 15px;
   background-color: #f4f4f9;
@@ -75,12 +78,12 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.igdb-section h2 {
+.igdb h2 {
   margin-bottom: 10px;
   color: #764ba2;
 }
 
-.igdb-section p {
+.igdb p {
   margin: 5px 0;
   color: #555;
 }
