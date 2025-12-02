@@ -53,16 +53,16 @@ export default function Header() {
             </button>
           </>
         ) : (
-          <button className="btnInicioSesion" onClick={()=>navigate('/login')}>
-            <img src="../public/img/usuario.png" width="30" height="30" />
+          <button type="button" className="btnInicioSesion" onClick={() => navigate('/login')} aria-label="Iniciar sesión">
+            <img src="/img/usuario.png" width="30" height="30" alt="Usuario" />
           </button>
         )}
 
-        <button className="btnInicioSesion" onClick={()=>navigate('/carrito')}>
-          <img src="../public/img/shopping-cart.png" width="30" height="30" />
+        <button type="button" className="btnInicioSesion" onClick={() => navigate('/carrito')} aria-label="Ver carrito">
+          <img src="/img/shopping-cart.png" width="30" height="30" alt="Carrito" />
         </button>
-        <button className="btnInicioSesion" onClick={()=>navigate('agregar-producto')}>
-          <img src="../public/img/shopping-cart.png" width="30" height="30" />
+        <button type="button" className="btnInicioSesion" onClick={() => navigate('/agregar-producto')} aria-label="Agregar producto">
+          <img src="/img/shopping-cart.png" width="30" height="30" alt="Agregar producto" />
         </button>
       </div>
     </header>
