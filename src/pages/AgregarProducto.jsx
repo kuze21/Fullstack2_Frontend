@@ -3,16 +3,16 @@ import { crearProducto } from "../services/producto.js";
 import { useNavigate } from "react-router-dom";
 
 export default function AgregarProducto() {
-  const [titulo, setTitulo] = useState("");
+  const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState("");
-  const [imagen, setImagen] = useState("");
+  const [url_imagen, setImagen] = useState("");
 
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const nuevo = { titulo, precio: Number(precio), imagen };
+    const nuevo = { nombre, precio: Number(precio), url_imagen };
 
     await crearProducto(nuevo);
 
@@ -30,9 +30,9 @@ export default function AgregarProducto() {
       >
         <input
           type="text"
-          placeholder="Título"
-          value={titulo}
-          onChange={(e) => setTitulo(e.target.value)}
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
           required
         />
 
@@ -46,13 +46,13 @@ export default function AgregarProducto() {
 
         <input
           type="text"
-          placeholder="/img/imagen.jpg"
+          placeholder="urlImagen"
           value={imagen}
           onChange={(e) => setImagen(e.target.value)}
           required
         />
 
-        <button className="btn-comprar">Guardar</button>
+        <button type="submit" className="btn-comprar">Guardar</button>
       </form>
     </main>
   );

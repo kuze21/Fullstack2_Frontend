@@ -28,7 +28,7 @@ export default function Header() {
         <button className="btnInicioSesion" onClick={()=>navigate('/carrito')}>
           <img src="../public/img/shopping-cart.png" width="30" height="30" />
         </button>
-        <button className="btnInicioSesion" onClick={()=>navigate('agregar-producto')}>
+        <button className="btnInicioSesion" onClick={()=>navigate('/agregar-producto')}>
           <img src="../public/img/shopping-cart.png" width="30" height="30" />
         </button>
       </div>

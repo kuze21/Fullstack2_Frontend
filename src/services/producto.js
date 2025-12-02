@@ -6,6 +6,11 @@ export async function crearProducto(producto) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(producto),
   });
+
+  if (!res.ok) {
+    throw new Error("Error al crear el producto");
+  }
+
   return res.json();
 }
 

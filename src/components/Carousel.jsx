@@ -17,9 +17,9 @@ export default function Carousel() {
             <Link to={`/producto/${prod.id}`}>
               <div className="carousel-image-wrapper">
               <img 
-                src={prod.imagen} 
+                src={prod.url_imagen} 
                 className="carousel-image" 
-                alt={prod.titulo} 
+                alt={prod.nombre} 
               />
               </div>
             </Link>

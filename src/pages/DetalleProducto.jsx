@@ -13,7 +13,7 @@ export default function Producto() {
   useEffect(() => {
     if (!producto) return;
 
-    getGameInfo(producto.titulo)
+    getGameInfo(producto.nombre)
       .then(data => setIgdbData(data))
       .catch(() => setIgdbData(null))
   }, [producto])
@@ -22,10 +22,10 @@ export default function Producto() {
 
   return (
     <main className="producto-detalle">
-      <img className="producto-img" src={producto.imagen} alt={producto.titulo} />
+      <img className="producto-img" src={producto.url_imagen} alt={producto.nombre} />
 
       <div className="producto-info">
-        <h1>{producto.titulo}</h1>
+        <h1>{producto.nombre}</h1>
         <p className="descripcion">{producto.descripcion}</p>
         <p className="precio">${producto.precio}</p>
 
