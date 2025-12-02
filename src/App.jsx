@@ -6,11 +6,13 @@ import MenuPrincipal from './pages/MenuPrincipal.jsx';
 import Login from './pages/Login.jsx';
 import Productos from "./pages/Productos.jsx";
 import DetalleProducto from "./pages/DetalleProducto.jsx";
-import Registrarse from "./pages/Registrarse.jsx";
-import AdminPanel from "./pages/AdminPanel.jsx";
 
 /*
 import Carrito from "./pages/Carrito.jsx";
+import AgregarProducto from "./pages/AgregarProducto.jsx";
+
+/*
+
 import Login from "./pages/Login.jsx";
 import Formulario from "./pages/Formulario.jsx";
 import MapaSitio from "./pages/MapaSitio.jsx";
@@ -27,9 +29,6 @@ function App() {
       <Route element={<Layout><MenuPrincipal /></Layout>} path="/" />
       <Route element={<Layout><Productos /></Layout>} path="/productos" />
       <Route element={<Layout><DetalleProducto /></Layout>} path="/producto/:id" />
-      <Route element={<Layout><Login /></Layout>} path="/login" />
-      <Route element={<Layout><Registrarse /></Layout>} path="/registrarse" />
-      <Route element={<Layout><AdminPanel /></Layout>} path="/admin" />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
