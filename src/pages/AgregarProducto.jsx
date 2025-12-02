@@ -18,7 +18,7 @@ export default function AgregarProducto() {
     try {
       await crearProducto(nuevo);
 
-      setDescripcion("");
+      // limpia los campos del formulario
       setNombre("");
       setPrecio("");
       setStock("");
