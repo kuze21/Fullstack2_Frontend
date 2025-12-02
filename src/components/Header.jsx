@@ -1,8 +1,24 @@
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 import "./Header.css"
 
 export default function Header() {
   const navigate = useNavigate()
+  const { token, user, logout } = useAuth()
+  const isAuthenticated = !!token
+  const isAdmin = (() => {
+    if (!user) return false
+    // roles as array of strings
+    if (Array.isArray(user.roles) && user.roles.includes('ADMIN')) return true
+    // role fields
+    if (user?.rol === 'ADMIN' || user?.role === 'ADMIN') return true
+    // authorities could be array of strings or objects like { authority: 'ROLE_ADMIN' }
+    if (Array.isArray(user.authorities)) {
+      if (user.authorities.includes('ROLE_ADMIN')) return true
+      if (user.authorities.some(a => a && (a.authority === 'ROLE_ADMIN' || a === 'ROLE_ADMIN'))) return true
+    }
+    return false
+  })()
   return (
     <header>
       <div>
@@ -23,9 +39,26 @@ export default function Header() {
         </menu>
       </div>
       <div className="InicioSesion">
-        <button className="btnInicioSesion" onClick={()=>navigate('/login')}>
-          <img src="../public/img/usuario.png" width="30" height="30" />
-        </button>
+        {isAuthenticated ? (
+          <>
+            <button className="btnInicioSesion" onClick={() => navigate(isAdmin ? '/admin' : '/profile')}>
+              {`Hola ${user?.nombres || user?.name || user?.preferred_username || user?.username || user?.correo || user?.email || 'Perfil'}`}
+            </button>
+            {isAdmin && (
+              <button className="btnInicioSesion" onClick={() => navigate('/admin')} style={{ marginLeft: 8 }}>
+                Panel
+              </button>
+            )}
+            <button className="btnInicioSesion" onClick={() => { logout(); navigate('/'); }} title="Cerrar sesión">
+              Cerrar Sesión
+            </button>
+          </>
+        ) : (
+          <button className="btnInicioSesion" onClick={()=>navigate('/login')}>
+            <img src="../public/img/usuario.png" width="30" height="30" />
+          </button>
+        )}
+
         <button className="btnInicioSesion" onClick={()=>navigate('/carrito')}>
           <img src="../public/img/shopping-cart.png" width="30" height="30" />
         </button>
