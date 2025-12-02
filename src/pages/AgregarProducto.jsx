@@ -18,7 +18,6 @@ export default function AgregarProducto() {
     try {
       await crearProducto(nuevo);
 
-      setDescripcion("");
       setNombre("");
       setPrecio("");
       setStock("");
