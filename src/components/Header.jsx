@@ -46,7 +46,7 @@ export default function Header() {
               Cerrar Sesión
             </button>
             <button type="button" className="btnInicioSesion" onClick={() => navigate('/agregar-producto')} aria-label="Agregar producto">
-              <img src="/img/signo-mas.png" width="30" height="30" alt="Agregar producto" />
+              <img src="/img/signo_mas.png" width="30" height="30" alt="Agregar producto" />
             </button>
           </>
         ) : (

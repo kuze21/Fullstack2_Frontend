@@ -8,17 +8,10 @@ const Login = () => {
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
   const [remember, setRemember] = useState(false)
 
   const { login } = useAuth()
-
-  const location = useLocation()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    if (location.state?.email) setUser(location.state.email)
-  }, [location.state])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -34,12 +27,9 @@ const Login = () => {
       
       console.log("Respuesta del Backend:", response); // Para depuración
 
-      // --- CORRECCIÓN CLAVE AQUÍ ---
-      // 1. Normalizamos la respuesta (por si usas axios, el body real está en .data)
       const data = response.data || response;
 
-      // 2. Buscamos el campo exacto que definiste en Java: "access_token"
-      // Agregamos fallbacks por si acaso, pero "access_token" es el principal.
+
       const token = data.access_token || data.accessToken || data.token;
 
       if (!token) {

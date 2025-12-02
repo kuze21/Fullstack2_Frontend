@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'http://10.199.7.228:8080'; //cambiar por la IP del servidor
 
 export async function getGameInfo(nombre) {
   const response = await fetch(
