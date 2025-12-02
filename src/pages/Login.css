@@ -1,0 +1,16 @@
+.form-login{
+  max-width:420px;
+  width:100%;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+.password-wrapper input {
+  flex: 1 1 auto;
+}
+.toggle-password{
+  height:38px;
+}
+.login-btn{
+  padding:10px 14px;
+}

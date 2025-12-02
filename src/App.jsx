@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 
 import MenuPrincipal from './pages/MenuPrincipal.jsx';
+import Login from './pages/Login.jsx';
 import Productos from "./pages/Productos.jsx";
 import DetalleProducto from "./pages/DetalleProducto.jsx";
 import Carrito from "./pages/Carrito.jsx";
@@ -26,6 +27,7 @@ function App() {
       <Route element={<Layout><MenuPrincipal /></Layout>} path="/" />
       <Route element={<Layout><Productos /></Layout>} path="/productos" />
       <Route element={<Layout><DetalleProducto /></Layout>} path="/producto/:id" />
+      <Route element={<Layout><Login /></Layout>} path="/login" />
       <Route element={<Layout><Carrito /></Layout>} path="/carrito" />
       <Route element={<Layout><AgregarProducto /></Layout>} path="/agregar-producto" />
 
