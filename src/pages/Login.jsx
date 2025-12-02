@@ -25,8 +25,7 @@ const Login = () => {
       const credentials = { correo: user, password: password }
       const response = await loginUser(credentials)
       
-      console.log("Respuesta del Backend:", response); // Para depuración
-
+      console.log("Respuesta del Backend:", response); 
       const data = response.data || response;
 
 
@@ -69,7 +68,7 @@ const Login = () => {
 
           <div className="password-wrapper d-flex align-items-center">
             <input
-              type={showPassword ? 'text' : 'password'}
+              type={ 'password'}
               id="password"
               name="password"
               value={password}
