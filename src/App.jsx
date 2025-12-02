@@ -8,6 +8,7 @@ import Productos from "./pages/Productos.jsx";
 import DetalleProducto from "./pages/DetalleProducto.jsx";
 import Carrito from "./pages/Carrito.jsx";
 import AgregarProducto from "./pages/AgregarProducto.jsx";
+import Registrarse from "./pages/Registrarse.jsx";
 
 /*
 
@@ -23,15 +24,14 @@ import RutaProtegida from "./components/RutaProtegida.jsx";
 function App() {
   return (
     <Routes>
-      {/* Public wrapped in Layout */}
       <Route element={<Layout><MenuPrincipal /></Layout>} path="/" />
       <Route element={<Layout><Productos /></Layout>} path="/productos" />
       <Route element={<Layout><DetalleProducto /></Layout>} path="/producto/:id" />
       <Route element={<Layout><Login /></Layout>} path="/login" />
       <Route element={<Layout><Carrito /></Layout>} path="/carrito" />
       <Route element={<Layout><AgregarProducto /></Layout>} path="/agregar-producto" />
+      <Route element={<Layout><Registrarse /></Layout>} path="/registrarse" />
 
-      {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

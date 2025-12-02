@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../services/api'
 import { useAuth } from '../context/AuthContext'
 import './Login.css'
@@ -8,18 +8,11 @@ const Login = () => {
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [remember, setRemember] = useState(false)
 
   const { login } = useAuth()
-
-  const location = useLocation()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (location.state?.email) setUser(location.state.email)
-  }, [location.state])
-
+  //revisa si los campos estan vacios
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!user || !password) {
@@ -34,19 +27,15 @@ const Login = () => {
       
       console.log("Respuesta del Backend:", response); // Para depuración
 
-      // --- CORRECCIÓN CLAVE AQUÍ ---
-      // 1. Normalizamos la respuesta (por si usas axios, el body real está en .data)
       const data = response.data || response;
 
-      // 2. Buscamos el campo exacto que definiste en Java: "access_token"
-      // Agregamos fallbacks por si acaso, pero "access_token" es el principal.
-      const token = data.access_token || data.accessToken || data.token;
+      const token = data.access_token
 
       if (!token) {
         throw new Error('Credenciales válidas, pero no se recibió el token de acceso.')
       }
       
-      login(token, remember)
+      login(token)
       navigate('/')
     } catch (err) {
       console.error(err)
@@ -79,7 +68,7 @@ const Login = () => {
 
           <div className="password-wrapper d-flex align-items-center">
             <input
-              type={showPassword ? 'text' : 'password'}
+              type={ 'password'}
               id="password"
               name="password"
               value={password}
