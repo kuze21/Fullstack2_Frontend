@@ -1,11 +1,11 @@
 @import url('../styles/Base.css');
 
-/* Estilos específicos para la página principal */
 .contenedor-productos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
     padding: 1rem 0;
+    margin-top: 100px;
 }
 
 .producto {
@@ -58,10 +58,4 @@
 
 .producto-agregar:hover {
     background-color: #0305a0;
-}
-
-/* Estilos para el carrusel */
-.carousel-item img {
-    height: auto;
-    object-fit: cover;
 }

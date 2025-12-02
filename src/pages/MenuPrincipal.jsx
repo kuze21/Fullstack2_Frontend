@@ -1,13 +1,8 @@
 import './MenuPrincipal.css'
 import Carousel from '../components/Carousel'
 import { addToCart } from '../utils/cart'
-
-const productos = [
-  { titulo: 'Terraria', precio: 10000, imagen: '../public/img/terraria.jpg' },
-  { titulo: 'GTA V', precio: 10000, imagen: '../public/img/gtaV.jpg' },
-  { titulo: 'Left 4 Dead 2', precio: 10000, imagen: '../public/img/Left_4_dead_2.jpg' },
-  { titulo: 'Outer Wilds', precio: 10000, imagen: '../public/img/Outer_Wilds.jpg' },
-]
+import InfoProductos from '../data/InfoProductos.js'
+import { Link } from 'react-router-dom'
 
 export default function MenuPrincipal() {
   return (
@@ -28,11 +23,13 @@ export default function MenuPrincipal() {
       </section>
 
       <main>
-        <h2>Todos los productos</h2>
+        <h2>Juegos</h2>
         <div className="contenedor-productos">
-          {productos.map(p => (
+          {InfoProductos.map(p => (
             <div className="producto" key={p.titulo}>
-              <img className="producto-imagen" src={p.imagen} alt={p.titulo} />
+              <Link to={`/producto/${p.id}`}>
+                <img className="producto-imagen" src={p.imagen} alt={p.titulo} />
+              </Link>
               <div className="producto-detalles">
                 <h3 className="producto-titulo">{p.titulo}</h3>
                 <p className="producto-precio">${p.precio}</p>

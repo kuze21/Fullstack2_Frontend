@@ -1,10 +1,13 @@
+header, 
 .header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+
   padding: 10px 20px;
   background-color: #9158eca9;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,38 +18,61 @@
   cursor: pointer;
 }
 
-.header-menu ul {
+#menu menu {
   display: flex;
   gap: 20px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.header-menu li {
+#menu li {
   cursor: pointer;
   font-weight: 500;
-  transition: color 0.3s;
   color: white;
+  transition: color 0.3s;
+  padding: 0 15px;
 }
 
-.header-menu li:hover {
+#menu a:hover {
   color: #d4c1f8;
 }
 
-.header-buttons {
+#menu a {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header-buttons,
+.InicioSesion {
   display: flex;
   gap: 10px;
 }
 
-.header-buttons button {
+.header-buttons button,
+.btnInicioSesion,
+.shopping-cart-btn {
   background-color: #7a05be;
   border-radius: 2rem;
   padding: 6px;
   border: 2px solid black;
   cursor: pointer;
+
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.3s;
 }
 
-.header-buttons button:hover {
+.header-buttons button:hover,
+.btnInicioSesion:hover,
+.shopping-cart-btn:hover {
   background-color: #0305a0;
+}
+
+header h1 {
+  color: white;
+  font-size: 24px;
 }
