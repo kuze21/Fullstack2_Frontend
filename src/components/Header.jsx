@@ -35,7 +35,7 @@ export default function Header() {
         {isAuthenticated ? (
           <>
             <button className="btnInicioSesion" onClick={() => navigate(isAdmin ? '/admin' : '/profile')}>
-              {`Hola ${user?.name}`}
+              {`Hola ${user?.nombres || user?.name || user?.preferred_username || user?.username || user?.correo || user?.email || 'Perfil'}`}
             </button>
             {isAdmin && (
               <button className="btnInicioSesion" onClick={() => navigate('/admin')} style={{ marginLeft: 8 }}>
@@ -46,18 +46,13 @@ export default function Header() {
               Cerrar Sesión
             </button>
             <button type="button" className="btnInicioSesion" onClick={() => navigate('/agregar-producto')} aria-label="Agregar producto">
-              <img src="/img/signo_mas.png" width="30" height="30" alt="Agregar producto" />
+              <img src="/img/signo-mas.png" width="30" height="30" alt="Agregar producto" />
             </button>
           </>
         ) : (
-          <>
           <button type="button" className="btnInicioSesion" onClick={() => navigate('/login')} aria-label="Iniciar sesión">
             <img src="/img/usuario.png" width="30" height="30" alt="Usuario" />
           </button>
-          <button type="button" className="btnInicioSesion" onClick={() => navigate('/agregar-producto')} aria-label="Agregar">
-            <img src="/img/signo_mas.png" width="30" height="30" alt="Agregar Producto" />
-          </button>
-          </>
         )}
       </div>
     </header>
