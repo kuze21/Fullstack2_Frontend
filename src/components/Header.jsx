@@ -9,10 +9,13 @@ export default function Header() {
   const isAuthenticated = Boolean(token)
   const isAdmin = Boolean(
     user &&
-      (user.role === 'admin' ||
-        user.roles?.includes?.('admin') ||
-        user.isAdmin)
+      (user.rol === 'ROLE_ADMIN')
   )
+  const isClient = Boolean(
+    user &&
+      (user.rol === 'ROLE_USER')
+  )
+  
   return (
     <header>
       <div>
@@ -34,19 +37,19 @@ export default function Header() {
       <div className="InicioSesion">
         {isAuthenticated ? (
           <>
-            <button className="btnInicioSesion" onClick={() => navigate(isAdmin ? '/admin' : '/profile')}>
-              {`Hola ${user?.nombres || user?.name || user?.preferred_username || user?.username || user?.correo || user?.email || 'Perfil'}`}
-            </button>
+            <p className="txtUsuario">Hola {user?.name}</p>
             {isAdmin && (
               <button className="btnInicioSesion" onClick={() => navigate('/admin')} style={{ marginLeft: 8 }}>
-                Panel
+                Panel de Control
+              </button>
+            )}
+            {isClient && (
+              <button className="btnInicioSesion" onClick={() => navigate('/')} style={{ marginLeft: 8 }}>
+                Carrito
               </button>
             )}
             <button className="btnInicioSesion" onClick={() => { logout(); navigate('/'); }} title="Cerrar sesión">
               Cerrar Sesión
-            </button>
-            <button type="button" className="btnInicioSesion" onClick={() => navigate('/agregar-producto')} aria-label="Agregar producto">
-              <img src="/img/signo_mas.png" width="30" height="30" alt="Agregar producto" />
             </button>
           </>
         ) : (

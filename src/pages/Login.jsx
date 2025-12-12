@@ -25,11 +25,12 @@ const Login = () => {
       const credentials = { correo: user, password: password }
       const response = await loginUser(credentials)
       
-      console.log("Respuesta del Backend:", response); 
+      console.log("Respuesta completa del Backend:", response); 
       const data = response.data || response;
-
+      console.log("Data extraída:", data);
 
       const token = data.access_token || data.accessToken || data.token;
+      console.log("Token extraído:", token);
 
       if (!token) {
         throw new Error('Credenciales válidas, pero no se recibió el token de acceso.')

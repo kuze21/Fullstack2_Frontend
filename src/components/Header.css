@@ -76,3 +76,10 @@ header h1 {
   color: white;
   font-size: 24px;
 }
+
+.txtUsuario {
+  font-size: 15px;
+  color: white;
+  margin-right: 10px;
+  margin-top:10px
+}

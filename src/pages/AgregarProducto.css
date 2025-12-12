@@ -1,0 +1,31 @@
+.form{
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.header-form{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-back{
+    border: solid black 2px;
+    border-radius: 50%;
+    background-color: blueviolet;
+}
+
+.btn-back img{
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.main{
+    padding: 24px;
+    align-items: center;
+}

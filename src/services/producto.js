@@ -1,4 +1,4 @@
-const API = "http://10.199.7.228:8080/api/productos"; //cambiar por la IP del servidor
+const API = "http://192.168.1.20:8080/api/productos"; //cambiar por la IP del servidor
 
 export async function crearProducto(producto) {
   const res = await fetch(API, {

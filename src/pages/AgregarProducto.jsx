@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { crearProducto } from "../services/producto.js";
 import { useNavigate } from "react-router-dom";
+import "./AgregarProducto.css";
 
 export default function AgregarProducto() {
   const [nombre, setNombre] = useState("");
@@ -34,12 +35,15 @@ export default function AgregarProducto() {
   }
 
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Agregar Producto</h1>
+    <main className="main">
+      <div className="header-form">
+        <a href="#" onClick={(e) => { e.preventDefault(); navigate('/admin') }} className="btn-back"> <img src="/img/flechas-izquierda.png" alt="Volver" /></a>
+        <h2>Agregar Nuevo Producto</h2>
+      </div>
 
       <form
         onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 400 }}
+        className="form"
       >
 
         <input

@@ -8,6 +8,7 @@ import Productos from "./pages/Productos.jsx";
 import DetalleProducto from "./pages/DetalleProducto.jsx";
 import AgregarProducto from "./pages/AgregarProducto.jsx";
 import Registrarse from "./pages/Registrarse.jsx";
+import AdminPanel from "./pages/AdminPanel.jsx";
 
 /*
 
@@ -15,7 +16,6 @@ import Login from "./pages/Login.jsx";
 import Formulario from "./pages/Formulario.jsx";
 import MapaSitio from "./pages/MapaSitio.jsx";
 import Registrarse from "./pages/Registrarse.jsx"
-import AdminPanel from "./pages/AdminPanel.jsx";
 import RutaAdmin from "./components/RutaAdmin.jsx";
 import RutaProtegida from "./components/RutaProtegida.jsx";
 */
@@ -29,6 +29,7 @@ function App() {
       <Route element={<Layout><Login /></Layout>} path="/login" />
       <Route element={<Layout><AgregarProducto /></Layout>} path="/agregar-producto" />
       <Route element={<Layout><Registrarse /></Layout>} path="/registrarse" />
+      <Route element={<Layout><AdminPanel /></Layout>} path="/admin" />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
