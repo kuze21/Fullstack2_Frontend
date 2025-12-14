@@ -38,14 +38,12 @@ export default function Header() {
         {isAuthenticated ? (
           <>
             <p className="txtUsuario">Hola {user?.name}</p>
+            <button className="btnInicioSesion" onClick={() => navigate('/carrito')} style={{ marginLeft: 2 }}>
+              <img src="/img/trolley.png" width="30" height="30" alt="Carrito" />
+            </button>
             {isAdmin && (
-              <button className="btnInicioSesion" onClick={() => navigate('/admin')} style={{ marginLeft: 8 }}>
+              <button className="btnInicioSesion" onClick={() => navigate('/admin')} style={{ marginLeft: 2 }}>
                 Panel de Control
-              </button>
-            )}
-            {isClient && (
-              <button className="btnInicioSesion" onClick={() => navigate('/')} style={{ marginLeft: 8 }}>
-                Carrito
               </button>
             )}
             <button className="btnInicioSesion" onClick={() => { logout(); navigate('/'); }} title="Cerrar sesión">

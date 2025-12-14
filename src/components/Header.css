@@ -18,6 +18,12 @@ header,
   cursor: pointer;
 }
 
+#menu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 #menu menu {
   display: flex;
   gap: 20px;
@@ -42,6 +48,7 @@ header,
   color: white;
   font-weight: 500;
   transition: color 0.3s;
+  text-decoration: none;
 }
 
 .header-buttons,

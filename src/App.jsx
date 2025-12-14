@@ -9,6 +9,7 @@ import DetalleProducto from "./pages/DetalleProducto.jsx";
 import AgregarProducto from "./pages/AgregarProducto.jsx";
 import Registrarse from "./pages/Registrarse.jsx";
 import AdminPanel from "./pages/AdminPanel.jsx";
+import Carrito from "./pages/Carrito.jsx";
 
 /*
 
@@ -30,6 +31,7 @@ function App() {
       <Route element={<Layout><AgregarProducto /></Layout>} path="/agregar-producto" />
       <Route element={<Layout><Registrarse /></Layout>} path="/registrarse" />
       <Route element={<Layout><AdminPanel /></Layout>} path="/admin" />
+      <Route element={<Layout><Carrito /></Layout>} path="/carrito" />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

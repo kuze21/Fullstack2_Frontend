@@ -43,7 +43,7 @@ export default function MenuPrincipal() {
       </section>
 
       <main>
-        <h2 style={{ marginTop: '20px' }}>Juegos</h2>
+        <h2 style={{ marginTop: '20px' }}>Juegos Destacados</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className="contenedor-productos">
           {destacados.map(p => (
