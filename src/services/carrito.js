@@ -1,4 +1,4 @@
-const API = "http://localhost:8080/api/cart";
+const API = "http://192.168.1.20:8080/api/cart";
 
 function authHeaders() {
   const token = localStorage.getItem("token");

@@ -38,9 +38,11 @@ export default function Header() {
         {isAuthenticated ? (
           <>
             <p className="txtUsuario">Hola {user?.name}</p>
-            <button className="btnInicioSesion" onClick={() => navigate('/carrito')} style={{ marginLeft: 2 }}>
-              <img src="/img/trolley.png" width="30" height="30" alt="Carrito" />
-            </button>
+            {isClient && (
+              <button className="btnInicioSesion" onClick={() => navigate('/carrito')} style={{ marginLeft: 2 }}>
+                Carrito
+              </button>
+            )}
             {isAdmin && (
               <button className="btnInicioSesion" onClick={() => navigate('/admin')} style={{ marginLeft: 2 }}>
                 Panel de Control

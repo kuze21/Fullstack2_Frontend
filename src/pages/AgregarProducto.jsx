@@ -27,7 +27,7 @@ export default function AgregarProducto() {
 
       alert("Producto agregado correctamente");
 
-      navigate("/productos");
+      navigate("/agregar-producto");
     } catch (error) {
       console.error(error);
       alert("Error al agregar el producto");
@@ -37,7 +37,7 @@ export default function AgregarProducto() {
   return (
     <main className="main">
       <div className="header-form">
-        <a href="#" onClick={(e) => { e.preventDefault(); navigate('/admin') }} className="btn-back"> <img src="/img/flechas-izquierda.png" alt="Volver" /></a>
+        <a href="#" onClick={(e) => { e.preventDefault(); navigate('/panelProducts') }} className="btn-back"> <img src="/img/flechas-izquierda.png" alt="Volver" /></a>
         <h2>Agregar Nuevo Producto</h2>
       </div>
 

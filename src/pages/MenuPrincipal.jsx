@@ -54,9 +54,6 @@ export default function MenuPrincipal() {
               <div className="producto-detalles">
                 <h3 className="producto-titulo">{p.nombre}</h3>
                 <p className="producto-precio">${p.precio}</p>
-                <button className="producto-agregar">
-                  Agregar
-                </button>
               </div>
             </div>
           ))}

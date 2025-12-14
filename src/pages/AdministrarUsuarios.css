@@ -1,0 +1,68 @@
+@import url('../styles/Base.css');
+
+.contenedor-usuarios {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.usuario {
+  border-radius: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.usuario-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.usuario-nombre {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.usuario-email {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.usuario-rol {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.usuario-rol select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+.usuario-botones {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.usuario-eliminar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.usuario-eliminar:hover {
+  background-color: #b32532;
+}

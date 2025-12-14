@@ -9,7 +9,10 @@ import DetalleProducto from "./pages/DetalleProducto.jsx";
 import AgregarProducto from "./pages/AgregarProducto.jsx";
 import Registrarse from "./pages/Registrarse.jsx";
 import AdminPanel from "./pages/AdminPanel.jsx";
+import AdministrarUsuarios from "./pages/AdministrarUsuarios.jsx";
 import Carrito from "./pages/Carrito.jsx";
+import PanelProducts from './pages/PanelProducts.jsx'; 
+import ModificarProducto from './pages/ModificarProducto.jsx';  
 
 /*
 
@@ -31,7 +34,11 @@ function App() {
       <Route element={<Layout><AgregarProducto /></Layout>} path="/agregar-producto" />
       <Route element={<Layout><Registrarse /></Layout>} path="/registrarse" />
       <Route element={<Layout><AdminPanel /></Layout>} path="/admin" />
+      <Route element={<Layout><AdministrarUsuarios /></Layout>} path="/administrar-usuarios" />
       <Route element={<Layout><Carrito /></Layout>} path="/carrito" />
+      <Route element={<Layout><PanelProducts /></Layout>} path="/panelProducts" />
+      <Route element={<Layout><ModificarProducto /></Layout>} path="/modificar-producto" />
+      <Route element={<Layout><ModificarProducto /></Layout>} path="/modificar-producto/:id" />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

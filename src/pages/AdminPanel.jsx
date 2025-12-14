@@ -26,7 +26,7 @@ export default function AdminPanel() {
           </button>
         </div>
         <div className="container-btnProducts">
-          <button className="btn" onClick={() => navigate('/agregar-producto')}>
+          <button className="btn" onClick={() => navigate('/panelProducts')}>
             Adminstracion de Productos
           </button>
         </div>

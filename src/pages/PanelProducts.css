@@ -1,0 +1,33 @@
+.txtWelcome {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.container-btnUsers {
+    align-items: right;
+}
+
+.container-btnProducts {
+    align-items: left;
+    margin-left: 20px;
+}
+
+.btn{
+    background-color: #7a05be;
+    border-radius: 2rem;
+    padding: 10px 20px;
+    border: 2px solid black;
+    color: white;
+    font-size: 18px;
+}
+.btn:hover {
+    background-color: #9d06bb;
+    border: 2px solid black;
+}

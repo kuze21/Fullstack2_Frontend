@@ -1,6 +1,31 @@
 //const BASE_URL = 'http://192.168.1.20:8080'; //cambiar por la IP del servidor
-const BASE_URL = 'http://localhost:8080'
+const BASE_URL = 'http://192.168.1.20:8080';
 const API_AUTH_URL = `${BASE_URL}/api/auth`;
+
+// --- helpers ---
+async function parseJsonSafe(response) {
+	const text = await response.text();
+	if (!text) return null;
+	try {
+		return JSON.parse(text);
+	} catch (err) {
+		// Intenta extraer el primer bloque JSON válido dentro del texto
+		const start = text.indexOf('[');
+		const end = text.lastIndexOf(']');
+		if (start !== -1 && end !== -1 && end > start) {
+			const slice = text.slice(start, end + 1);
+			try {
+				return JSON.parse(slice);
+			} catch (err2) {
+				console.error('Fallo al parsear bloque JSON extraído. Status:', response.status, 'Preview:', slice.slice(0, 500));
+				throw new Error(`Respuesta no válida del servidor (${response.status}). Detalle: ${slice.slice(0, 200)}`);
+			}
+		}
+
+		console.error('Respuesta no es JSON. Status:', response.status, 'Preview:', text.slice(0, 500));
+		throw new Error(`Respuesta no válida del servidor (${response.status}). Detalle: ${text.slice(0, 200)}`);
+	}
+}
 
 // --- AUTH ---
 export const loginUser = async (credentials) => {
@@ -31,75 +56,52 @@ export const registerUser = async (userData) => {
 
 // --- ADMIN USUARIOS ---
 export const fetchUsuarios = async (token) => {
-	const response = await fetch(`${BASE_URL}/api/usuarios`, {
+	const response = await fetch(`${BASE_URL}/users`, {
 		method: 'GET',
 		headers: {
 			'Authorization': `Bearer ${token}`,
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
 		}
 	});
 	if (!response.ok) {
-		const err = await response.json().catch(() => null);
-		throw new Error(err?.message || `Error al obtener usuarios: ${response.status}`);
+		const err = await parseJsonSafe(response).catch(() => null);
+		throw new Error((err && err.message) || `Error al obtener usuarios: ${response.status}`);
 	}
-	return response.json();
+	return parseJsonSafe(response);
 };
 
 export const eliminarUsuario = async (userId, token) => {
-	const response = await fetch(`${BASE_URL}/api/usuarios/${userId}`, {
+	const response = await fetch(`${BASE_URL}/users/${userId}`, {
 		method: 'DELETE',
 		headers: {
 			'Authorization': `Bearer ${token}`,
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
 		}
 	});
 	if (!response.ok) {
-		const err = await response.json().catch(() => null);
-		throw new Error(err?.message || `Error al eliminar usuario: ${response.status}`);
+		const err = await parseJsonSafe(response).catch(() => null);
+		throw new Error((err && err.message) || `Error al eliminar usuario: ${response.status}`);
 	}
-	return response.json();
+	// algunos backends devuelven 204 en delete
+	if (response.status === 204) return { success: true };
+	return parseJsonSafe(response);
 };
 
 export const cambiarRolUsuario = async (userId, newRole, token) => {
-	const response = await fetch(`${BASE_URL}/api/usuarios/${userId}/rol`, {
+	const response = await fetch(`${BASE_URL}/users/${userId}/rol`, {
 		method: 'PUT',
 		headers: {
 			'Authorization': `Bearer ${token}`,
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
 		},
 		body: JSON.stringify({ rol: newRole })
 	});
 	if (!response.ok) {
-		const err = await response.json().catch(() => null);
-		throw new Error(err?.message || `Error al cambiar rol: ${response.status}`);
+		const err = await parseJsonSafe(response).catch(() => null);
+		throw new Error((err && err.message) || `Error al cambiar rol: ${response.status}`);
 	}
-	return response.json();
-};
-
-// --- ADMIN PRODUCTOS ---
-export const fetchProductos = async () => {
-	const response = await fetch(`${BASE_URL}/api/productos`, {
-		method: 'GET',
-		headers: { 'Content-Type': 'application/json' }
-	});
-	if (!response.ok) {
-		const err = await response.json().catch(() => null);
-		throw new Error(err?.message || `Error al obtener productos: ${response.status}`);
-	}
-	return response.json();
-};
-
-export const eliminarProducto = async (productId, token) => {
-	const response = await fetch(`${BASE_URL}/api/productos/${productId}`, {
-		method: 'DELETE',
-		headers: {
-			'Authorization': `Bearer ${token}`,
-			'Content-Type': 'application/json'
-		}
-	});
-	if (!response.ok) {
-		const err = await response.json().catch(() => null);
-		throw new Error(err?.message || `Error al eliminar producto: ${response.status}`);
-	}
-	return response.json();
+	return parseJsonSafe(response);
 };
