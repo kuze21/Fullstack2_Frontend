@@ -77,7 +77,20 @@ export default function ModificarProducto() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const actualizado = { nombre, precio: Number(precio), stock: Number(stock), url_imagen };
+    const precioNum = Number(precio);
+    const stockNum = Number(stock);
+
+    // Validar que precio y stock no sean negativos
+    if (precioNum < 0) {
+      alert("El precio no puede ser negativo");
+      return;
+    }
+    if (stockNum < 0) {
+      alert("El stock no puede ser negativo");
+      return;
+    }
+
+    const actualizado = { nombre, precio: precioNum, stock: stockNum, url_imagen };
 
     try {
       await actualizarProducto(productoSeleccionado.id, actualizado);

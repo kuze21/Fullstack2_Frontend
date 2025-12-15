@@ -14,7 +14,20 @@ export default function AgregarProducto() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const nuevo = { nombre, precio: Number(precio), stock: Number(stock), url_imagen };
+    const precioNum = Number(precio);
+    const stockNum = Number(stock);
+
+    // Validar que precio y stock no sean negativos
+    if (precioNum < 0) {
+      alert("El precio no puede ser negativo");
+      return;
+    }
+    if (stockNum < 0) {
+      alert("El stock no puede ser negativo");
+      return;
+    }
+
+    const nuevo = { nombre, precio: precioNum, stock: stockNum, url_imagen };
 
     try {
       await crearProducto(nuevo);

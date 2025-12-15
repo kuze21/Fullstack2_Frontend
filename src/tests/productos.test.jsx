@@ -1,27 +1,88 @@
-import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
 import Productos from '../pages/Productos'
-import * as cart from '../utils/cart'
-import { vi } from 'vitest'
+import * as carritoService from '../services/carrito'
 
-describe('Productos - Renderizado y eventos ', () => {
-  it('renderiza todos los elementos del conjunto de datos', () => {
-    render(<Productos />)
-    const expected = ['Terraria', 'GTA V', 'Left 4 Dead 2', 'Outer Wilds']
-    expected.forEach(t => expect(screen.getByText(t)).toBeInTheDocument())
+  //verifica que se envie post a la api con el productId y token
+  it('agregarAlCarrito debe enviar POST con productId y token', async () => {
+    const mockFetch = vi.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ success: true })
+      })
+    )
+    global.fetch = mockFetch
+    localStorage.setItem('token', 'test-token')
+
+    await carritoService.agregarAlCarrito(5)
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      'http://192.168.1.20:8080/api/cart/items/5',
+      expect.objectContaining({
+        method: 'POST',
+        headers: { Authorization: 'Bearer test-token' }
+      })
+    )
   })
 
-  it('al hacer click en Agregar llama a addToCart con los datos correctos', () => {
-    const spy = vi.spyOn(cart, 'addToCart').mockImplementation(() => [])
-    render(<Productos />)
+  //verifica que se envie delete a la api con el productId y token
+  it('eliminarDelCarrito debe enviar DELETE con productId y token', async () => {
+    const mockFetch = vi.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ success: true })
+      })
+    )
+    global.fetch = mockFetch
+    localStorage.setItem('token', 'test-token')
 
-    const botones = screen.getAllByText('Agregar')
-    expect(botones.length).toBeGreaterThan(0)
-    fireEvent.click(botones[0])
+    await carritoService.eliminarDelCarrito(5)
 
-    expect(spy).toHaveBeenCalled()
-    expect(spy).toHaveBeenCalledWith({ nombre: 'Terraria', precio: 10000, imagen: '/img/terraria.jpg' })
-
-    spy.mockRestore()
+    expect(mockFetch).toHaveBeenCalledWith(
+      'http://192.168.1.20:8080/api/cart/items/5',
+      expect.objectContaining({
+        method: 'DELETE',
+        headers: { Authorization: 'Bearer test-token' }
+      })
+    )
   })
-})
+
+  //verifica que se envie get a la api con el token
+  it('obtenerCarrito debe incluir el token en headers', async () => {
+    const mockFetch = vi.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ items: [] })
+      })
+    )
+    global.fetch = mockFetch
+    localStorage.setItem('token', 'test-token')
+
+    await carritoService.obtenerCarrito()
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      'http://192.168.1.20:8080/api/cart',
+      expect.objectContaining({
+        method: 'GET',
+        headers: { Authorization: 'Bearer test-token' }
+      })
+    )
+  })
+
+  //verifica que lanzar error NO_AUTH cuando status es 401
+  it('debería lanzar NO_AUTH cuando status es 401', async () => {
+    global.fetch = vi.fn(() =>
+      Promise.resolve({
+        ok: false,
+        status: 401,
+        json: () => Promise.resolve({ error: 'Unauthorized' })
+      })
+    )
+
+    try {
+      await carritoService.obtenerCarrito()
+      expect.fail('Debería haber lanzado un error')
+    } catch (error) {
+      expect(error.message).toBe('NO_AUTH')
+    }
+  })
