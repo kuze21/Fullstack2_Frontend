@@ -9,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [remember, setRemember] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const { login } = useAuth()
   const navigate = useNavigate()
@@ -69,7 +70,7 @@ const Login = () => {
 
           <div className="password-wrapper d-flex align-items-center">
             <input
-              type={ 'password'}
+              type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
               value={password}
@@ -78,6 +79,15 @@ const Login = () => {
               placeholder="Ingrese contraseña"
               required
             />
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="showPassword"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            <label htmlFor="showPassword" className="ms-2">Mostrar Contraseña</label>
           </div>
         </div>
 

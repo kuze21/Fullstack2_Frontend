@@ -84,9 +84,6 @@ export const eliminarUsuario = async (userId, token) => {
 		const err = await parseJsonSafe(response).catch(() => null);
 		throw new Error((err && err.message) || `Error al eliminar usuario: ${response.status}`);
 	}
-	// algunos backends devuelven 204 en delete
-	if (response.status === 204) return { success: true };
-	return parseJsonSafe(response);
 };
 
 export const cambiarRolUsuario = async (userId, newRole, token) => {
