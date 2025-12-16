@@ -1,6 +1,4 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import Productos from '../pages/Productos'
 import * as carritoService from '../services/carrito'
 
   //verifica que se envie post a la api con el productId y token

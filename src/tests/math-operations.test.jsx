@@ -24,7 +24,6 @@ describe('Operaciones Matemáticas Web', () => {
   describe('Validaciones de Entrada', () => {
     it('no debería permitir cantidad negativa', () => {
       expect(calcularPrecioTotal(100, -1)).toBe(-100);
-      // En producción, lanzar error o retornar 0
     });
 
     it('debería manejar porcentajes válidos', () => {
