@@ -42,6 +42,7 @@ export default function Carrito() {
   async function handleFinalizarCompra() {
     try {
       await pagarCarrito();
+      await cargarCarrito();
       alert("Compra realizada con éxito. ¡Gracias por tu compra!");
       setItems([]);
       setTotal(0);
