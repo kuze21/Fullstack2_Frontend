@@ -1,5 +1,5 @@
 //const BASE_URL = 'http://192.168.1.20:8080'; //cambiar por la IP del servidor
-const BASE_URL = 'http://192.168.1.20:8080';
+const BASE_URL = 'http://localhost:8080';
 const API_AUTH_URL = `${BASE_URL}/api/auth`;
 
 // --- helpers ---

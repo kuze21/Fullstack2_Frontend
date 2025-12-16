@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Carrito.css";
-import { obtenerCarrito, eliminarDelCarrito } from "../services/carrito.js";
+import { obtenerCarrito, eliminarDelCarrito, pagarCarrito } from "../services/carrito.js";
 import { Link } from "react-router-dom";
 
 export default function Carrito() {
@@ -38,6 +38,17 @@ export default function Carrito() {
   useEffect(() => {
     cargarCarrito();
   }, []);
+
+  async function handleFinalizarCompra() {
+    try {
+      await pagarCarrito();
+      alert("Compra realizada con éxito. ¡Gracias por tu compra!");
+      setItems([]);
+      setTotal(0);
+    } catch (e) {
+      alert("No se pudo completar la compra. Puede que no haya stock.");
+    }
+  }
 
   async function handleEliminar(productId) {
     try {
@@ -123,10 +134,10 @@ export default function Carrito() {
               <span>Total</span>
               <strong>${total}</strong>
             </div>
-
-            {/* Este botón es solo visual (no implementamos pago) */}
-            <button className="carrito-btn carrito-btn-principal">
-              Ir a pagar
+            <button 
+              className="carrito-btn carrito-btn-principal"
+              onClick={() => handleFinalizarCompra()}>
+              Pagar
             </button>
 
             <p className="carrito-nota">

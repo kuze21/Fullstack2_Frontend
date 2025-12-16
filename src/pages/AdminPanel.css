@@ -12,9 +12,13 @@
 
 .container-btnUsers {
     align-items: right;
+    background-color: white;
+    border-radius: 2rem;
 }
 
 .container-btnProducts {
+    background-color: white;
+    border-radius: 2rem;
     align-items: left;
     margin-left: 20px;
 }
